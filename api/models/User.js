@@ -10,6 +10,7 @@ module.exports = {
   attributes: {
     name: 'string',
     email: 'string',
+    username: 'string',
 
     posts: {
       collection: 'post',
