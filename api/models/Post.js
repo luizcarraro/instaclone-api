@@ -18,7 +18,9 @@ module.exports = {
     comments: {
       collection: 'comment',
       via: 'banana'
-    }
+    },
+
+    image: 'string'
 
   }
 };
