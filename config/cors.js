@@ -55,7 +55,7 @@ module.exports.cors = {
   *                                                                          *
   ***************************************************************************/
 
-  // credentials: true,
+  credentials: true,
 
   /***************************************************************************
   *                                                                          *
@@ -73,6 +73,5 @@ module.exports.cors = {
   *                                                                          *
   ***************************************************************************/
 
-  headers: 'content-type, Access-Control-Allow-Origin'
-
+  headers: '0, Access-Control-Allow-Headers, Accept, content-type, Access-Control-Allow-Origin, Authorization',
 };

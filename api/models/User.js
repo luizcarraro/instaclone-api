@@ -11,6 +11,7 @@ module.exports = {
     name: 'string',
     email: 'string',
     username: 'string',
+    password: 'string',
 
     posts: {
       collection: 'post',

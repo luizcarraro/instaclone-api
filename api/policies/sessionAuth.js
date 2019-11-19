@@ -7,15 +7,28 @@
  * @docs        :: http://sailsjs.org/#!/documentation/concepts/Policies
  *
  */
+var jwt = require('jsonwebtoken');
+
 module.exports = function(req, res, next) {
 
-  // User is allowed, proceed to the next policy, 
-  // or if this is the last policy, the controller
-  if (req.session.authenticated) {
-    return next();
+  let token = req.headers.authorization;
+
+  if(!token) {
+    return res.forbidden('Token ausente');
   }
 
-  // User is not allowed
-  // (default res.forbidden() behavior can be overridden in `config/403.js`)
-  return res.forbidden('You are not permitted to perform this action.');
+
+  token = token.replace('Bearer ', '');
+  console.log('Token:', token);
+
+  try {
+    var decoded = jwt.verify(token, 'capivara');
+    console.log('Decoded: ', decoded);
+    return next();
+  } catch (err) {
+    sails.log.error(err);
+    return res.forbidden('Token invalido!');
+  }
+
+  return res.forbidden('Usuário não autenticado!');
 };
